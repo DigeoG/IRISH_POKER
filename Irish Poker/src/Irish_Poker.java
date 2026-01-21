@@ -98,7 +98,7 @@ private  int round;
 				correct = false; 
 			
 			} else if(guess.equalsIgnoreCase("OUTSIDE")) {
-				 correct = Math.min(firstValue, secondValue) > thirdValue && Math.max(firstValue, secondValue) < thirdValue;
+				 correct = Math.min(firstValue, secondValue) > thirdValue || Math.max(firstValue, secondValue) < thirdValue;
 			}
 			
 			else if(guess.equalsIgnoreCase("INSIDE")) {
@@ -114,6 +114,50 @@ private  int round;
 			
 			return new RoundResult(correct, drinks, card3);
 		
+		}
+		public RoundResult playerRoundGuessSuit(String guess) {
+			
+			if(round != 4) {
+				throw new IllegalStateException("Not round 4!");
+				
+			}
+			
+			List<Card> hand = player.getHand();
+			
+			Card cardOne = hand.get(0);
+			Card cardTwo = hand.get(1);
+			Card cardThree = hand.get(2);
+			
+			Card cardFour = deck.drawCard();
+			player.addCard(cardFour);
+			String cardFourValue = cardFour.getSuit().toString();
+			
+			boolean correct;
+			
+			if(guess.equalsIgnoreCase("HEARTS")) {
+				correct = guess == cardFourValue;
+			
+			} else if (guess.equalsIgnoreCase("SPADES")) {
+				
+				correct = guess == cardFourValue;
+				
+			} else if(guess.equalsIgnoreCase("CLUBS")) {
+				
+				correct = guess == cardFourValue; 
+				
+			} else if(guess.equalsIgnoreCase("Diamonds")) {
+				
+				correct = guess == cardFourValue;
+			} else {
+				
+				throw new IllegalArgumentException("Guess must be 'HEARTS', 'SPADES' 'CLUBS', or 'DIAMONDS' ");
+			}
+			
+			int drinks = 8;
+			round ++; 
+			
+			return new RoundResult(correct, drinks, cardFour);
+			
 		}
 
 }
