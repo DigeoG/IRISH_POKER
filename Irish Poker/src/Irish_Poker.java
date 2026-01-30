@@ -122,42 +122,30 @@ private  int round;
 				
 			}
 			
-			List<Card> hand = player.getHand();
+			/*List<Card> hand = player.getHand();
 			
 			Card cardOne = hand.get(0);
 			Card cardTwo = hand.get(1);
-			Card cardThree = hand.get(2);
+			Card cardThree = hand.get(2);*/
 			
-			Card cardFour = deck.drawCard();
-			player.addCard(cardFour);
-			String cardFourValue = cardFour.getSuit().toString();
-			
-			boolean correct;
-			
-			if(guess.equalsIgnoreCase("HEARTS")) {
-				correct = guess == cardFourValue;
-			
-			} else if (guess.equalsIgnoreCase("SPADES")) {
-				
-				correct = guess == cardFourValue;
-				
-			} else if(guess.equalsIgnoreCase("CLUBS")) {
-				
-				correct = guess == cardFourValue; 
-				
-			} else if(guess.equalsIgnoreCase("Diamonds")) {
-				
-				correct = guess == cardFourValue;
-			} else {
-				
-				throw new IllegalArgumentException("Guess must be 'HEARTS', 'SPADES' 'CLUBS', or 'DIAMONDS' ");
-			}
+			 Card card = deck.drawCard();
+			    player.addCard(card);
+
+			    Suit guessedsuit;
+			    try {
+			    	guessedsuit = Suit.valueOf(guess.toUpperCase());
+			    } catch (IllegalArgumentException e) {
+			    	throw new IllegalArgumentException("Guess must be 'HEARTS', 'SPADES', 'DIAMONDS' or 'CLUBS'");
+			    }
+
+			    boolean correct = card.getSuit() == guessedsuit;
 			
 			int drinks = 8;
 			round ++; 
 			
-			return new RoundResult(correct, drinks, cardFour);
+			return new RoundResult(correct, drinks, card);
 			
 		}
-
+		
+		
 }
