@@ -1,3 +1,9 @@
+/* This class is used to store a players cards as well as has actions to remove and add cards
+ * to a players hand. Lists have built in .add and .remove functions. Must call the array 
+ * which in this case is hand to use those built in functions. The score setters and getters are 
+ * there just incase for future use. 
+ */
+
 import java.util.ArrayList; 
 import java.util.List;
 public class Player {
@@ -25,4 +31,8 @@ public class Player {
 		public void addScore(int amount) {
 			score += amount; 
 		}
-}
+		public void removeCard(Card card) {
+			hand.remove(card);
+
+		}
+		}

@@ -1,6 +1,8 @@
-
+/* Enum class to decide the action to take when a card is flipped
+ * Enums must always be in caps.
+ */
 public enum ActionType {
 	
-	TAKE, 
-	GIVE; 
+	TAKE_DRINKS, 
+	GIVE_CARD; 
 }

@@ -1,3 +1,12 @@
+/*This class handles the rounds for irish poker in a typical game. 4 rounds for this game.
+ * It uses the class round result as round result is what should be returned showing whether or not
+ the guess was correct or not, how many drinks are taken and what was the card. The card must be memorized
+ as we use it for later rounds 
+ * 1. Guess the color, the player must guess the color as seen below, drink or give 2 drinks
+ * 2. Player must guess higher or lower from the previous round, player drinks or gives 4 drinks
+ * 3. Player must guess outside or in between from the first round card and second round. Take or drink 6 drinks
+ * 4. Player must guess the suit. Take or give 8 drinks
+ */
 import java.util.ArrayList;
 import java.util.List;
 public class Irish_Poker {
@@ -13,7 +22,6 @@ private  int round;
 	}
 	
 	
-			
 		public RoundResult playerRound1ColorGuess(String guess) { //must take parameter of a guess of color
 			if (round != 1) {
 				throw new IllegalStateException("Not Round 1!");

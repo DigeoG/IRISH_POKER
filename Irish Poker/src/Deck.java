@@ -29,12 +29,15 @@ public class Deck {
 	
 					public Card drawCard () { 		//drawing a card from the deck(cards arrary)     	
 						  if(cards.isEmpty()) {
-							 return null; 
+							 throw new IllegalStateException("Cannot draw from an empty deck!");
 				}
 							   return cards.remove(cards.size() - 1); //remove a card from the deck, the bottom of it
 		
 		}
-						
+					public boolean isEmpty() {
+						return cards.isEmpty();
+					}
+				
 }
 
 

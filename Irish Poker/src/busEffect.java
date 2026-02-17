@@ -1,13 +1,11 @@
 
-public class busEffect {
+public abstract class busEffect {
 
-	private final Player player; 
-	private final ActionType actionType;
-	private final State state; 
+	protected final Player player;
+	protected final State state;
 	
-	public busEffect(Player player, ActionType actionType, State state) {
+	protected busEffect(Player player, State state) {
 		this.player = player;
-		this.actionType = actionType; 
 		this.state = state;
 	}
 	
@@ -15,21 +13,12 @@ public class busEffect {
 		return player;
 	}
 	
-	public ActionType getActionType() {
-		return actionType;
-	}
+	//public ActionType getActionType() {
+		//return actionType;
+	//}
 	public State getState() {
 		return state;
 	}
 	
-	@Override 
-	
-	public String toString() {
-		return "busEffect{" +
-					"player = " + player +
-					"actionType = " + actionType +
-					"state = " + state +
-					"}";
-	}
-		
+	public abstract ActionType getActionType();
 }
