@@ -1,3 +1,5 @@
+import game.Card;
+import game.Deck;
 
 public class MainIrishPoker {
 	
